@@ -1,0 +1,11 @@
+2015/06/05 12:31:58 This is a test log entry
+2015/06/05 12:31:58 mysql-root:  mysql\
+2015/06/05 12:31:58 apps-root:  !apps
+2015/06/05 12:31:58 app name: a
+2015/06/05 12:31:58 app folder: !apps\a
+2015/06/05 12:31:58 conf folder: !apps\a\_conf\
+2015/06/05 12:31:58 File settings.json is copied from !apps\a\_conf\ to root folder
+2015/06/05 12:31:58 File my.ini is copied from !apps\a\_conf\ to mysql\my.ini folder
+2015/06/05 12:31:58 my.ini exists; processing mysql\bin\mysqld.exe --standalone
+2015/06/05 12:31:58 settings.json exists; processing phpDesktop-Chrome.exe
+2015/06/05 12:31:58 my.ini exists; processing mysql\bin\mysqladmin.exe shutdown

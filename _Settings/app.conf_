@@ -1,0 +1,1 @@
+{"App":{"ConfDst":"app.conf","ConfSrc":"!apps/orig/app.x.conf","Name":"Orig.x"},"Database":{"ConfDst":"mysql/my.ini","ConfSrc":"db.x.conf","Name":"MySql"},"System":{"ConfDst":"settings.json","ConfSrc":"pd.x.conf","Name":"phpDesktop"}}

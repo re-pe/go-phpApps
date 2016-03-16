@@ -1,0 +1,73 @@
+{
+	"Application" : {                             // būtinas!!!
+		"ConfSrc"       : "_default/app.conf",    // būtinas!!!
+		"ConfDst"       : "app.conf",             // jei nil, StartConf.ApplicationList.ConfDst
+		"Name"          : "Default"               // jei nil, StartConf.ApplicationList.Name
+	},
+	"Database"    : {                             // jei nil arba {}, nieko
+		"ID"            : "mysql-5-7-10",         // jei nil, StartConf.DefaultDatabase.ID
+		"ConfSrc"       : "db.conf",              // jei nil, StartConf.DefaultDatabase.ConfSrc
+		"ConfDst"       : "mysql-5.7.10/my.ini",  // jei nil, StartConf.DatabaseList.${ID}.ConfDst
+		"Name"          : "MySql"                 // jei nil, StartConf.DatabaseList.${ID}.Name
+	},	
+	"System"      : {                             // jei nil arba {}, StartConf.System
+		"ConfSrc"       : "pd.conf",              // jei nil, StartConf.System.ConfSrc
+		"ConfDst"       : "settings.json",        // jei nil, StartConf.System.ConfDst
+		"Name"          : "phpDesktop",           // jei nil, StartConf.System.Name
+	}
+}
+
+[
+	Branch{Application, Error, "Key %s does not exist!", [
+		Leaf{ConfSrc, Error, "Key %s does not exist!"},
+		Leaf{ConfDst, Redirect, StartConf.ApplicationList.ConfDst}
+		Leaf{Name, Redirect, StartConf.ApplicationList.Name}
+		
+	]},
+	Branch{Database, Ignore, nil, [
+		Leaf{ID, Redirect, StartConf.DefaultDatabase.ID}
+		Leaf{ConfSrc, Redirect, StartConf.DefaultDatabase.ConfSrc}
+		Leaf{ConfDst, Redirect, StartConf.DatabaseList.${this.ID}.ConfDst}
+		Leaf{Name, Redirect, StartConf.DatabaseList.${this.ID}.Name}
+	]}
+	Branch{System, Redirect, StartConf.System, [
+		Leaf{ConfSrc, Redirect, StartConf.System.ConfSrc}
+		Leaf{ConfDst, Redirect, StartConf.System.ConfDst}
+		Leaf{Name, Redirect, StartConf.System.Name}
+	]}
+]
+
+Algoritmas:
+
+Jeigu Application'o nėra, išeiti
+Jeigu Application.ConfSrc nėra, išeiti
+AppDir := Application.ConfSrc
+AppDir := ToSlash(AppDir)
+Jeigu AppDir == "", išeiti
+
+Jeigu Application.ConfDist nėra, StartConf.ApplicationList.ConfDst
+Jeigu Application.Name nėra, StartConf.ApplicationList.Name
+
+map[string]map[string]string
+
+[ Application : []
+
+{
+	List : [ kApp, kDb, kSys ]
+	
+	Keys : {
+		kApp : {
+			Empty : Error
+			List : [ kConfSrc, kConfDst, kName ]
+			Keys : {
+				kConfSrc : error,
+				kConfDst : bDefaults.kAppL.kConfDst,
+				kName    : bDefaults.kAppL.kName
+			}
+		}
+		kDb : {
+			Empty : nil
+			List : {ID}
+		}
+	}
+}

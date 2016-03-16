@@ -1,0 +1,43 @@
+appsConf = "apps.json" 
+myDir = "mysql"
+confDir  = "_conf"
+appsDir  = "!apps"
+appDir   = appsdir
+settings = "settings.json"
+myini    = "my.ini"
+
+Jeigu nëra nei confDir, nei appsDir, programa baigia darbà.
+
+Jeigu appsConf nëra nei ðakniniame kataloge, nei confDir, nei appsDir, programa baigia darbà.
+Kitu atveju ið eilës nuskaitomi visi rasti appsConf failai. 
+Vëliau nuskaitomø failø reikðmës uþraðo ankstesnes reikðmes.
+
+Jeigu appsConf.MysqlDir yra, tikrinama, ar jo nurodytas katalogas yra ðakniniame kataloge
+Jeigu yra, mysqlDir = phpApps.MysqlDir.
+
+Jeigu phpAppsConf.ConfDir yra, tikrinama, ar jo nurodytas katalogas yra ðakniniame kataloge
+jeigu taip, confDir = phpAppsConf.ConfDir
+
+Jeigu phpAppsConf.Settings yra, tikrinama, ar jo nurodytas failas yra confDir.
+Jeigu yra, settings = confDir + "/" + settings
+Jeigu ne, tikrinama ar nurodytas failas 
+
+Jeigu phpAppsConf.Myini yra, tikrinama, ar jo nurodytas failas yra confDir.
+- ar confDir yra myini failas; jeigu yra, myini = confDir + "/" + myini 
+
+Jeigu phpAppsConf.AppsDir yra, tikrinama, ar jo nurodytas katalogas yra ðakniniame kataloge 
+Jeigu yra, appsDir = phpAppsConf.AppsDir
+
+
+Jeigu phpAppsConf.AppDir yra, tikrinama, ar jo nurodytas katalogas yra phpApps.AppsDir kataloge
+Jeigu yra, appDir = appsDir + "/" + appDir
+
+Jeigu phpAppsConf.AppConf yra, tikrinama, ar jo nurodytas failas yra appDir kataloge.
+Jeigu yra, jis nuskaitomas á appConf.
+
+Jeigu appConf.ConfDir yra, tikrinama, ar jo nurodytas katalogas yra appDir kataloge.
+Jeigu yra, appConfDir = appDir + "/" + appConf.ConfDir
+
+Jeigu appConf.Settings yra, tikrinama, ar jo nurodytas failas yra appConfDir kataloge.
+Jeigu yra, jis kopijuojamas ið appConfDir á ðakniná katalogà.
+Jeigu ne, 

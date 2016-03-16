@@ -1,0 +1,18 @@
+{
+	"App": {
+		"ConfDst": "app.conf",
+		"ConfSrc": "_default/app.conf",
+		"Name": "Default"
+	},
+	"Database": {
+		"ConfDst": "mysql-5.7.10/my.ini",
+		"ConfSrc": "db.conf",
+		"Name"   : "MySQl"
+		"ID"     : "mysql-5-7-10"
+	},
+	"System": {
+		"ConfDst": "settings.json",
+		"ConfSrc": "pd.conf",
+		"Name": "phpDesktop"
+	}
+}

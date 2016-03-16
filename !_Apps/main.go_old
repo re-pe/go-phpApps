@@ -1,0 +1,94 @@
+package main
+
+import (
+//	"encoding/json"
+//	"io"
+//	"io/ioutil"
+	"log"
+	"os"
+	"os/exec"
+//	"path/filepath"
+//	"strings"
+)
+
+	const cTempDir      = "_tmp" 
+	const cSep          = "/"
+	const cLogDir       = "log"
+	const cLogName      = "phpApps.log"
+	const cSettingsJson = "settings.json"
+	const cMyDir        = "mysql"
+	const cMyIni        = "my.ini"
+
+func FileExists(fileName string) (bool, error) {
+
+	finfo, err := os.Stat(fileName)
+	if err != nil {
+		// no such file or dir
+		return false, err
+	}
+	if finfo.IsDir() {
+		// it's a directory
+		return false, err
+	} else {
+		// it's a file
+	    return true, err
+	}
+}
+
+func main() {
+	logDir := cTempDir + cSep + cLogDir
+	err := os.MkdirAll(logDir, os.ModeDir)
+	logFileName := logDir + cSep + cLogName
+	logfile, err := os.Create(logFileName)
+	if err != nil {
+		panic(err)
+	}
+	defer logfile.Close()
+
+	log.SetOutput(logfile)
+	log.Println("This is log file of phpApps")
+	
+
+	log.Println()
+	var myerr error
+	fileExists, myerr := FileExists(cSettingsJson)
+	if fileExists {
+		log.Println("settings.json file exists")
+	
+		var cmd *exec.Cmd
+		mysql_loaded := false
+		fileExists, myerr = FileExists(cMyDir + cSep + cMyIni)
+		if fileExists {
+			log.Println("my.ini file exists")
+			log.Println("mysql must be loaded.")
+			cmdStr := cMyDir + cSep + "bin/mysqld.exe"
+			cmdArgs :=  "--standalone"
+			log.Println(cMyIni, "exists. Processing \"" + cmdStr + "\" command")
+			cmd := exec.Command(cmdStr, cmdArgs)
+			myerr = cmd.Start()
+			if myerr != nil {
+				log.Fatal(myerr)
+			}
+			mysql_loaded = true
+		} else {
+			log.Println("my.ini file not exists")
+			log.Println("Error:", myerr)
+			log.Println("mysql must not be loaded.")
+		}
+		
+		log.Println("Processing \"phpDesktop-Chrome.exe\" command")
+		cmd = exec.Command("phpDesktop-Chrome.exe")
+		cmd.Run()
+
+		if mysql_loaded {
+			log.Println("mysqld.exe has been loaded. Processing \"" + cMyDir + cSep + "bin/mysqladmin.exe" + " shutdown\" command")
+			cmd = exec.Command(cMyDir + cSep + "bin/mysqladmin.exe", "shutdown")
+			cmd.Start()
+		}
+	} else {
+		log.Println("Error:", myerr)
+		log.Println("phpApps cannot be loaded.")
+	}
+	return
+}
+ 

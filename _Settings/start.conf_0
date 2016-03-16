@@ -1,0 +1,23 @@
+{
+	"Apps"        :  {
+		"SourceDir"        : "!apps",
+		"ConfDir"          : ".",
+		"ConfPattern"      : "app*.conf",
+		"ConfFile"         : "app.conf"
+	},
+	"Database"    :  {
+		"DBName"           : "mysql",
+		"ConfDir"          : "mysql",
+		"ConfFile"         : "my.ini"
+	},
+	"phpDesktop"  :  {
+		"DefaultsDir"      : "_default",
+		"ConfDir"          : ".",
+		"ConfFile"         : "settings.json"
+	},
+	"Test"        :  [
+		                     "a",
+		                     "b",
+		                     "c"
+	]
+}

@@ -1,0 +1,64 @@
+settings.exe started
+
+File start.conf exists and was read
+
+appConfName: app.conf
+
+startTree: map[AppConfDest:app.conf AppConfName:app*.conf AppsDir:!apps DefaultDir:_default FileName:start.conf]
+
+
+File !apps\SF5\app.SF5.conf exists and was read
+
+!apps\SF5\app.SF5.conf contents:
+map[AppName:SF5 MyConfName:my.ini MyConfDest:mysql/my.ini SetConfDest:settings.json SetConfName:settings.json FileName:!apps\SF5\app.SF5.conf] 
+
+File !apps\orig\app.conf exists and was read
+
+!apps\orig\app.conf contents:
+map[AppName:Orig MyConfDest:mysql/my.ini MyConfName:my.ini SetConfDest:settings.json SetConfName:settings.json FileName:!apps\orig\app.conf] 
+
+File !apps\orig\app.x.conf exists and was read
+
+!apps\orig\app.x.conf contents:
+map[SetConfDest:settings.json SetConfName:settings.x.json FileName:!apps\orig\app.x.conf AppName:Orig.x MyConfDest:mysql/my.ini MyConfName:my.x.ini] 
+
+File _default\app.conf exists and was read
+
+_default\app.conf contents:
+map[MyConfDest:mysql/my.ini MyConfName:my.ini SetConfDest:settings.json SetConfName:settings.json FileName:_default\app.conf AppName:Default] 
+
+confFiles: map[
+	!apps\SF5\app.SF5.conf:map[
+		AppName:SF5 
+		MyConfName:my.ini 
+		MyConfDest:mysql/my.ini 
+		SetConfDest:settings.json 
+		SetConfName:settings.json 
+		FileName:!apps\SF5\app.SF5.conf
+	] 
+	!apps\orig\app.conf:map[
+		AppName:Orig 
+		MyConfDest:mysql/my.ini 
+		MyConfName:my.ini 
+		SetConfDest:settings.json 
+		SetConfName:settings.json 
+		FileName:!apps\orig\app.conf
+	] 
+	!apps\orig\app.x.conf:map[
+		AppName:Orig.x 
+		MyConfDest:mysql/my.ini 
+		MyConfName:my.x.ini 
+		SetConfDest:settings.json 
+		SetConfName:settings.x.json 
+		FileName:!apps\orig\app.x.conf
+	] 
+	_default\app.conf:map[
+		AppName:Default 
+		MyConfDest:mysql/my.ini 
+		MyConfName:my.ini 
+		SetConfDest:settings.json 
+		SetConfName:settings.json 
+		FileName:_default\app.conf
+	]
+]
+

@@ -1,0 +1,37 @@
+Defaults
+
+cAppDir     = "."                             // "."
+cConfDir    = "_conf"                         // "_conf"
+cMyIni      = "my.ini"                        // "my.ini"
+cSettings   = "settings.json"                 // "settings.json"
+cMyDir      = "mysql"                         // "mysql"
+cAppConf    = "_app.conf"                     // "_app.conf"
+
+appDir     = cAppDir                          // "."
+confDir    = appDir   + cSep + cConfDir       // "./_conf"
+myIni      = cConfDir + cSep + cMyIni         // "./_conf/my.ini"
+settings   = cConfDir + cSep + cSettings      // "./_conf/settings.json"
+myDir      = cMyDir                           // "mysql"
+
+appConf    = cConfDir + cSep + cAppConf       // "./_conf/_app.conf"
+                                             
+./_conf/_app.conf
+
+appDir     += appDir  + cSep + conf.AppDir    // "./!apps"
+confDir    =  appDir  + cSep + conf.ConfDir   // "./!apps/_conf"
+myIni      =  confDir + cSep + conf.MyIni     // "./!apps/_conf/my.ini"
+settings   =  confDir + cSep + conf.Settings  // "./!apps/_conf/settings.json"
+myDir      =  conf.MyDir                      // "mysql"
+
+appConf    =  confDir + cSep + conf.AppConf   // "./!apps/_conf/_app.conf"
+
+./!apps/_conf/_app.conf
+
+appDir     += appDir  + cSep + conf.AppDir    // "./!apps/orig"
+confDir    =  appDir  + cSep + conf.ConfDir   // "./!apps/orig/_conf"
+myIni      =  confDir + cSep + conf.MyIni     // "./!apps/orig/_conf/my.ini"
+settings   =  confDir + cSep + conf.Settings  // "./!apps/orig/_conf/settings.json"
+myDir      =  conf.MyDir                      // "mysql"
+
+appConf    =  confDir + cSep + conf.AppConf   // "./!apps/orig/_conf/_app.conf" - nėra
+
