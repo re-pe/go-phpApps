@@ -3,7 +3,7 @@ package main
 import (
 	"bufio"
 	"bytes"
-	. "dtree"
+	. "github.com/re-pe/dtree-go"
 	"fmt"
 	"github.com/fatih/color"
 	"io"
@@ -153,7 +153,7 @@ func (confManager *ConfManager) SetConfsData() (err error){
 		err = confManager.ConfKeeper.Set(Key(bConfData, "+"), confManager.Value).Error
 		if err != nil { return }
 	}
-	confManager.FileContent = []byte(``)
+	confManager.Content = []byte(``)
 	return
 }
 

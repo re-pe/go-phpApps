@@ -40,4 +40,4 @@ Jeigu yra, appConfDir = appDir + "/" + appConf.ConfDir
 
 Jeigu appConf.Settings yra, tikrinama, ar jo nurodytas failas yra appConfDir kataloge.
 Jeigu yra, jis kopijuojamas ið appConfDir á ðakniná katalogà.
-Jeigu ne, 
+Jeigu ne,

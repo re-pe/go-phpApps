@@ -1,4 +1,4 @@
 {
-	"settings"  : "settings.json",
-	"myini"     : "my.ini"
+    "settings"  : "settings.json",
+    "myini"     : "my.ini"
 }

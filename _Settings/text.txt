@@ -1,2 +1,3 @@
 
 map[Apps:map[SourceDir:!apps/* SourceFile:app*.conf ConfDir:. ConfFile:app.conf] Database:map[DBName:mysql ConfDir:mysql ConfFile:my.ini] phpDesktop:map[DefaultsDir:_default ConfDir:. ConfFile:settings.json]]
+
