@@ -3,7 +3,7 @@ package main
 import (
 	"bufio"
 	"bytes"
-	. "github.com/re-pe/dtree-go"
+	. "github.com/re-pe/go-dtree"
 	"fmt"
 	"github.com/fatih/color"
 	"io"
